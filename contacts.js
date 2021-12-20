@@ -12,15 +12,46 @@ let contactsList = [
 
 export const addcontact = async (object) => {
     contactsList.push({ "id": object.id, "img": object.img, "name": object.name, "phone": object.phone });
+    // console.log("addcontactt", contactsList);
     return contactsList;
 }
 export const getAllcontacts = async () => {
+    // console.log("getAllcontacts",contactsList);
     return contactsList;
 }
 
 export const deleteContacts = async (id) => {
-    contactsList.splice(id, 1); 
+    debugger
+    contactsList.splice(id, 1);
+    // console.log("deleteContacts", contactsList);
+
     return contactsList;
+}
+export const putContacts = async (object) => {
+    let path = object.data.newContact;
+    let id = object.idsend.id
+
+     contactsList[id].img = path.img;
+    contactsList[id].name = path.name
+    contactsList[id].phone = path.phone;
+    if (path.title)
+        contactsList[id].title = path.title;
+    // console.log("newContact", newContact);
+    // contactsList.splice(id, 1);
+    // console.log("deleteputContacts", contactsList);
+
+    // contactsList.push({ "id": id, "img": path.img, "name": path.name, "phone": path.phone });
+    // console.log("putContacts", contactsList);
+    return contactsList;
+
+    // contactsList[path.id].img = path.img;
+    // contactsList[path.id].name = path.name
+    // contactsList[path.id].phone = path.phone;
+    // if (contactsList[path.id].title)
+    //     contactsList[path.id].title = path.title;
+    // console.log("newContact", newContact);
+
+    // return newContact;
 }
 
 
